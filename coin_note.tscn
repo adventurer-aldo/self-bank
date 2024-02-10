@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhv1nyy2v1xon"]
+
+[ext_resource type="Texture2D" uid="uid://bihf4i30in22c" path="res://0.01.png" id="1_jnnsr"]
+[ext_resource type="Script" path="res://Value.gd" id="2_6bmfe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngoom"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hlhef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vhb3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2i0n1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x876u"]
+bg_color = Color(0, 0.639216, 0.384314, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_picxn"]
+bg_color = Color(0.882353, 0, 0, 1)
+border_width_bottom = 5
+border_color = Color(0.572549, 0, 0.231373, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Coin_Note" type="VBoxContainer"]
+offset_left = 246.0
+offset_top = 515.0
+offset_right = 286.0
+offset_bottom = 555.0
+script = ExtResource("2_6bmfe")
+
+[node name="ImageAdd" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ngoom")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hlhef")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0vhb3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2i0n1")
+icon = ExtResource("1_jnnsr")
+expand_icon = true
+
+[node name="Amount" type="Label" parent="ImageAdd"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 41
+text = "0"
+metadata/_edit_group_ = true
+
+[node name="AmountBackground" type="Panel" parent="ImageAdd/Amount"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x876u")
+
+[node name="Reduce" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_picxn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_picxn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_picxn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2i0n1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_picxn")
+text = "ｰ"
+
+[connection signal="pressed" from="ImageAdd" to="." method="_on_pressed"]
+[connection signal="pressed" from="Reduce" to="." method="_on_reduce_pressed"]

@@ -1,0 +1,626 @@
+[gd_scene load_steps=26 format=3 uid="uid://dacwyb6disyj7"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_tjl5x"]
+[ext_resource type="PackedScene" uid="uid://dhv1nyy2v1xon" path="res://coin_note.tscn" id="2_3x43k"]
+[ext_resource type="Script" path="res://addons/SmoothScroll/SmoothScrollContainer.gd" id="2_fo8nf"]
+[ext_resource type="Texture2D" uid="uid://widu6o87l0e0" path="res://testure.png" id="2_gis8n"]
+[ext_resource type="Texture2D" uid="uid://cynay87xtrrn6" path="res://0.05.png" id="3_0ur54"]
+[ext_resource type="Texture2D" uid="uid://bdjobdy1nqgeh" path="res://20.png" id="3_sslrq"]
+[ext_resource type="Texture2D" uid="uid://d3ugkspao4px1" path="res://50.png" id="4_7yk4q"]
+[ext_resource type="Texture2D" uid="uid://iq24nfaj0s7n" path="res://0.1.png" id="4_i185j"]
+[ext_resource type="Texture2D" uid="uid://dfluo3flucvt8" path="res://100.png" id="5_krxdm"]
+[ext_resource type="Texture2D" uid="uid://cwxo421wuo5ud" path="res://0.5.png" id="5_ufd28"]
+[ext_resource type="Texture2D" uid="uid://d3gfqdd0uikwo" path="res://2.png" id="6_1u4cx"]
+[ext_resource type="Texture2D" uid="uid://b4acpmputul6p" path="res://1.png" id="6_508tn"]
+[ext_resource type="Texture2D" uid="uid://dy7lmau64l2ln" path="res://500.png" id="6_jixkf"]
+[ext_resource type="Texture2D" uid="uid://cgayqnu7af5vy" path="res://1000.png" id="7_p3g8o"]
+[ext_resource type="Texture2D" uid="uid://bv31vv1h7kwru" path="res://5.png" id="7_xq6kn"]
+[ext_resource type="Texture2D" uid="uid://tos1yc7b450m" path="res://10.png" id="8_wruxn"]
+[ext_resource type="Texture2D" uid="uid://bv30frngx1y4w" path="res://logo.png" id="17_r3edy"]
+[ext_resource type="FontFile" uid="uid://qopbj6btti51" path="res://fa-solid-900.ttf" id="18_rxqwy"]
+
+[sub_resource type="Theme" id="Theme_cx2lt"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88mfu"]
+bg_color = Color(0.0784314, 0.219608, 0.164706, 0.678431)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwfkj"]
+bg_color = Color(0, 0.639216, 0.384314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_bs4or"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HistoryScroll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(360, 246)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HistoryScroll:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8q304"]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HistoryScroll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(25, 246), Vector2(360, 246)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HistoryScroll:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(670, 1193), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1e1lg"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HistoryScroll:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(670, 1193)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HistoryScroll:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(360, 246), Vector2(25, 246)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mu1g7"]
+_data = {
+"RESET": SubResource("Animation_bs4or"),
+"hide": SubResource("Animation_8q304"),
+"show": SubResource("Animation_1e1lg")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjl5x")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gis8n")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.607843)
+
+[node name="Footer" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 135.0
+offset_top = 1562.5
+offset_right = -117.0
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cx2lt")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 27
+text = "@SelfBank 2024 by niluschia"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 145.0
+offset_right = -32.0
+offset_bottom = -1020.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_88mfu")
+
+[node name="Panel" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 380.0
+offset_right = -105.0
+offset_bottom = -1108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwfkj")
+
+[node name="ColorRect" type="ColorRect" parent="Background/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 85.0
+offset_right = -24.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.898039)
+
+[node name="CurrentBalanceLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = 245.0
+offset_right = -114.0
+offset_bottom = -1271.0
+grow_horizontal = 2
+theme = SubResource("Theme_cx2lt")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 61
+text = "Balanço corrente
+"
+
+[node name="MT" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 502.0
+offset_top = 393.0
+offset_right = -124.0
+offset_bottom = -1123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cx2lt")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 61
+text = "MT"
+horizontal_alignment = 2
+
+[node name="Logo" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = -7.0
+offset_right = 361.0
+offset_bottom = -1260.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.461095, 0.461095)
+texture = ExtResource("17_r3edy")
+
+[node name="Button" type="Label" parent="Background/Logo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 956.419
+offset_top = 95.425
+offset_right = 356.419
+offset_bottom = -174.575
+theme_override_colors/font_color = Color(0.901961, 0.87451, 0, 1)
+theme_override_colors/font_outline_color = Color(0.596078, 0.498039, 0, 1)
+theme_override_constants/outline_size = 39
+theme_override_fonts/font = ExtResource("18_rxqwy")
+theme_override_font_sizes/font_size = 186
+text = ""
+
+[node name="Balance" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 131.0
+offset_top = 393.0
+offset_right = -225.0
+offset_bottom = -1123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cx2lt")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 61
+text = "9,999,999.50"
+horizontal_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 608.0
+offset_right = 706.0
+offset_bottom = 1076.0
+horizontal_scroll_mode = 3
+script = ExtResource("2_fo8nf")
+allow_vertical_scroll = false
+
+[node name="Coins" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="0_01" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 0.01
+
+[node name="0_05" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 0.05
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/0_05" index="0"]
+mouse_filter = 1
+icon = ExtResource("3_0ur54")
+
+[node name="Amount" parent="ScrollContainer/Coins/0_05/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/0_05/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/0_05" index="1"]
+mouse_filter = 1
+
+[node name="0_1" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 0.1
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/0_1" index="0"]
+mouse_filter = 1
+icon = ExtResource("4_i185j")
+
+[node name="Amount" parent="ScrollContainer/Coins/0_1/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/0_1/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/0_1" index="1"]
+mouse_filter = 1
+
+[node name="0_5" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 0.5
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/0_5" index="0"]
+mouse_filter = 1
+icon = ExtResource("5_ufd28")
+
+[node name="Amount" parent="ScrollContainer/Coins/0_5/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/0_5/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/0_5" index="1"]
+mouse_filter = 1
+
+[node name="1" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 1.0
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/1" index="0"]
+mouse_filter = 1
+icon = ExtResource("6_508tn")
+
+[node name="Amount" parent="ScrollContainer/Coins/1/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/1/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/1" index="1"]
+mouse_filter = 1
+
+[node name="2" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 2.0
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/2" index="0"]
+mouse_filter = 1
+icon = ExtResource("6_1u4cx")
+
+[node name="Amount" parent="ScrollContainer/Coins/2/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/2/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/2" index="1"]
+mouse_filter = 1
+
+[node name="5" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 5.0
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/5" index="0"]
+mouse_filter = 1
+icon = ExtResource("7_xq6kn")
+
+[node name="Amount" parent="ScrollContainer/Coins/5/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/5/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/5" index="1"]
+mouse_filter = 1
+
+[node name="10" parent="ScrollContainer/Coins" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 10.0
+
+[node name="ImageAdd" parent="ScrollContainer/Coins/10" index="0"]
+mouse_filter = 1
+icon = ExtResource("8_wruxn")
+
+[node name="Amount" parent="ScrollContainer/Coins/10/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer/Coins/10/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer/Coins/10" index="1"]
+mouse_filter = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1078.0
+offset_right = 706.0
+offset_bottom = 1548.0
+horizontal_scroll_mode = 3
+script = ExtResource("2_fo8nf")
+allow_vertical_scroll = false
+
+[node name="Notes" type="HBoxContainer" parent="ScrollContainer2"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="20" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 20.0
+
+[node name="ImageAdd" parent="ScrollContainer2/Notes/20" index="0"]
+custom_minimum_size = Vector2(600, 300)
+mouse_filter = 1
+icon = ExtResource("3_sslrq")
+
+[node name="Amount" parent="ScrollContainer2/Notes/20/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer2/Notes/20/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer2/Notes/20" index="1"]
+mouse_filter = 1
+
+[node name="50" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 50.0
+
+[node name="ImageAdd" parent="ScrollContainer2/Notes/50" index="0"]
+custom_minimum_size = Vector2(600, 300)
+mouse_filter = 1
+icon = ExtResource("4_7yk4q")
+
+[node name="Amount" parent="ScrollContainer2/Notes/50/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer2/Notes/50/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer2/Notes/50" index="1"]
+mouse_filter = 1
+
+[node name="100" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 100.0
+
+[node name="ImageAdd" parent="ScrollContainer2/Notes/100" index="0"]
+custom_minimum_size = Vector2(600, 300)
+mouse_filter = 1
+icon = ExtResource("5_krxdm")
+
+[node name="Amount" parent="ScrollContainer2/Notes/100/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer2/Notes/100/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer2/Notes/100" index="1"]
+mouse_filter = 1
+
+[node name="500" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 500.0
+
+[node name="ImageAdd" parent="ScrollContainer2/Notes/500" index="0"]
+custom_minimum_size = Vector2(600, 300)
+mouse_filter = 1
+icon = ExtResource("6_jixkf")
+
+[node name="Amount" parent="ScrollContainer2/Notes/500/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer2/Notes/500/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer2/Notes/500" index="1"]
+mouse_filter = 1
+
+[node name="1000" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 1000.0
+
+[node name="ImageAdd" parent="ScrollContainer2/Notes/1000" index="0"]
+custom_minimum_size = Vector2(600, 300)
+mouse_filter = 1
+icon = ExtResource("7_p3g8o")
+
+[node name="Amount" parent="ScrollContainer2/Notes/1000/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer2/Notes/1000/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer2/Notes/1000" index="1"]
+mouse_filter = 1
+
+[node name="ActualButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 311.0
+offset_top = 159.0
+offset_right = -311.0
+offset_bottom = -1355.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_rxqwy")
+theme_override_font_sizes/font_size = 71
+text = ""
+
+[node name="HistoryScroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 246.0
+offset_right = -360.0
+offset_bottom = -1354.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fo8nf")
+
+[node name="History" type="VBoxContainer" parent="HistoryScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HistoryShowHide" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mu1g7")
+}
+
+[connection signal="updated" from="." to="ScrollContainer/Coins/0_01" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/0_05" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/0_1" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/0_5" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/1" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/2" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/5" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer/Coins/10" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer2/Notes/20" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer2/Notes/50" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer2/Notes/100" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer2/Notes/500" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer2/Notes/1000" method="_on_main_updated"]
+[connection signal="value_add" from="ScrollContainer/Coins/0_01" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/0_01" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/0_05" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/0_05" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/0_1" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/0_1" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/0_5" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/0_5" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/1" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/1" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/2" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/2" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/5" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/5" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer/Coins/10" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer/Coins/10" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer2/Notes/20" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer2/Notes/20" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer2/Notes/50" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer2/Notes/50" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer2/Notes/100" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer2/Notes/100" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer2/Notes/500" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer2/Notes/500" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer2/Notes/1000" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer2/Notes/1000" to="." method="_on_image_add_value_reduce"]
+[connection signal="pressed" from="ActualButton" to="." method="_on_actual_button_pressed"]
+
+[editable path="ScrollContainer/Coins/0_05"]
+[editable path="ScrollContainer/Coins/0_1"]
+[editable path="ScrollContainer/Coins/0_5"]
+[editable path="ScrollContainer/Coins/1"]
+[editable path="ScrollContainer/Coins/2"]
+[editable path="ScrollContainer/Coins/5"]
+[editable path="ScrollContainer/Coins/10"]
+[editable path="ScrollContainer2/Notes/20"]
+[editable path="ScrollContainer2/Notes/50"]
+[editable path="ScrollContainer2/Notes/100"]
+[editable path="ScrollContainer2/Notes/500"]
+[editable path="ScrollContainer2/Notes/1000"]
