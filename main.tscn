@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dacwyb6disyj7"]
+[gd_scene load_steps=27 format=3 uid="uid://dacwyb6disyj7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tjl5x"]
 [ext_resource type="PackedScene" uid="uid://dhv1nyy2v1xon" path="res://coin_note.tscn" id="2_3x43k"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cgayqnu7af5vy" path="res://1000.png" id="7_p3g8o"]
 [ext_resource type="Texture2D" uid="uid://bv31vv1h7kwru" path="res://5.png" id="7_xq6kn"]
 [ext_resource type="Texture2D" uid="uid://tos1yc7b450m" path="res://10.png" id="8_wruxn"]
+[ext_resource type="Texture2D" uid="uid://3vfevqanxbhg" path="res://200.png" id="17_acky2"]
 [ext_resource type="Texture2D" uid="uid://bv30frngx1y4w" path="res://logo.png" id="17_r3edy"]
 [ext_resource type="FontFile" uid="uid://qopbj6btti51" path="res://fa-solid-900.ttf" id="18_rxqwy"]
 
@@ -496,6 +497,24 @@ mouse_filter = 1
 [node name="Reduce" parent="ScrollContainer2/Notes/100" index="1"]
 mouse_filter = 1
 
+[node name="200" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
+layout_mode = 2
+value = 200.0
+
+[node name="ImageAdd" parent="ScrollContainer2/Notes/200" index="0"]
+custom_minimum_size = Vector2(600, 300)
+mouse_filter = 1
+icon = ExtResource("17_acky2")
+
+[node name="Amount" parent="ScrollContainer2/Notes/200/ImageAdd" index="0"]
+mouse_filter = 1
+
+[node name="AmountBackground" parent="ScrollContainer2/Notes/200/ImageAdd/Amount" index="0"]
+mouse_filter = 1
+
+[node name="Reduce" parent="ScrollContainer2/Notes/200" index="1"]
+mouse_filter = 1
+
 [node name="500" parent="ScrollContainer2/Notes" instance=ExtResource("2_3x43k")]
 layout_mode = 2
 value = 500.0
@@ -584,6 +603,7 @@ libraries = {
 [connection signal="updated" from="." to="ScrollContainer2/Notes/100" method="_on_main_updated"]
 [connection signal="updated" from="." to="ScrollContainer2/Notes/500" method="_on_main_updated"]
 [connection signal="updated" from="." to="ScrollContainer2/Notes/1000" method="_on_main_updated"]
+[connection signal="updated" from="." to="ScrollContainer2/Notes/200" method="_on_main_updated"]
 [connection signal="value_add" from="ScrollContainer/Coins/0_01" to="." method="_on_button_value_add"]
 [connection signal="value_reduce" from="ScrollContainer/Coins/0_01" to="." method="_on_image_add_value_reduce"]
 [connection signal="value_add" from="ScrollContainer/Coins/0_05" to="." method="_on_button_value_add"]
@@ -606,6 +626,8 @@ libraries = {
 [connection signal="value_reduce" from="ScrollContainer2/Notes/50" to="." method="_on_image_add_value_reduce"]
 [connection signal="value_add" from="ScrollContainer2/Notes/100" to="." method="_on_button_value_add"]
 [connection signal="value_reduce" from="ScrollContainer2/Notes/100" to="." method="_on_image_add_value_reduce"]
+[connection signal="value_add" from="ScrollContainer2/Notes/200" to="." method="_on_button_value_add"]
+[connection signal="value_reduce" from="ScrollContainer2/Notes/200" to="." method="_on_image_add_value_reduce"]
 [connection signal="value_add" from="ScrollContainer2/Notes/500" to="." method="_on_button_value_add"]
 [connection signal="value_reduce" from="ScrollContainer2/Notes/500" to="." method="_on_image_add_value_reduce"]
 [connection signal="value_add" from="ScrollContainer2/Notes/1000" to="." method="_on_button_value_add"]
@@ -622,5 +644,6 @@ libraries = {
 [editable path="ScrollContainer2/Notes/20"]
 [editable path="ScrollContainer2/Notes/50"]
 [editable path="ScrollContainer2/Notes/100"]
+[editable path="ScrollContainer2/Notes/200"]
 [editable path="ScrollContainer2/Notes/500"]
 [editable path="ScrollContainer2/Notes/1000"]
